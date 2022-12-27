@@ -24,7 +24,6 @@ public class plaintextToHtmlConverter {
     private String basicHtmlEncode(String source) {
         result = new ArrayList<>();
         convertedLine = new ArrayList<>();
-        //characterToConvert = stashNextCharacterAndAdvanceThePointer();
         convertion(source);
 
         addANewLine();
