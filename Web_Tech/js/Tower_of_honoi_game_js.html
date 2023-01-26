@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <style>
+        .div1,
+        .div2,
+        .div3 {
+            height: 50vh;
+            width: 32.9%;
+            
+            float: left;
+            border: 2px solid orange;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .div4 {
+            
+            clear: left;
+           
+        }
+
+        .btn-primary {
+            background-color: blue;
+            width: 100%;
+            height: 3rem;
+            border-radius: 16px;
+            opacity: 0.6;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+
+        }
+
+        
+
+        .btn-default {
+
+            width: 33%;
+            height: 2rem;
+            background-color:teal;
+            margin-top: 30px;
+            border-radius: 80px;
+
+            opacity: 0.6;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .flex-parent {
+            display: flex;
+            margin-top:30px ;
+          }
+          
+          .jc-center {
+            justify-content: center;
+          }
+          
+          button.margin-right {
+            margin-right: 70px;
+            background-color: cornflowerblue;
+            height: 4rem;
+            width: 8rem;
+            opacity: 0.6;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 80px;
+          }
+
+          button.button2{
+            background-color: cornflowerblue;
+            height: 4rem;
+            width: 8rem;
+            opacity: 0.6;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 80px;
+          }
+          
+          body {
+            background-image: url("https://cdn-media-2.freecodecamp.org/w1280/5f9ca6e9740569d1a4ca739a.jpg");
+           
+           
+          }
+        
+        
+    </style>
+</head>
+
+<!-- <body style="background-color: aquamarine;"> -->
+    <body>
+        
+    <h1 style="text-align: center;">Welcome to Tower of Hanoi! </h1>
+    <div class="div1" id="d1">
+
+        <button type="button"  class="btn btn-large btn-block btn-primary" id="0"onclick="">2</button>
+        <button type="button" class="btn btn-large btn-block btn-primary" id="1"onclick="">4</button>
+        <button type="button" class="btn btn-large btn-block btn-primary" id="2"onclick="">3</button>
+        <button type="button" class="btn btn-large btn-block btn-primary" id="3"onclick="">1</button>
+
+        
+    </div>
+    <div class="div2" id="d2"></div>
+    <div class="div3" id="d3"></div>
+    <div class="div4"  >
+
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="oneto2()">1->2</button>
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="twoto3()">2->3</button>
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="threeto1()">3->1</button>
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="threeto2()">3->2</button>
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="twoto1()">2->1</button>
+        <button type="button" class="btn btn-large btn-block btn-default" onclick="oneto3()">1->3</button>
+        </div>
+
+    <div class="flex-parent jc-center">
+
+        <button type="button" class="green margin-right" id="reset"  onclick="reset()">Reset</button>
+        <button type="button" class="button2" id="check" onclick="check()">Check 🔔</button>
+
+
+    </div>
+
+    <script>
+
+        const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+        const buttons = document.querySelectorAll("button");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+              audio.play();
+            });
+          });
+
+
+        const numbers = [1,2,3,4];
+        shuffle(numbers);
+        console.log(numbers)
+
+
+        function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+
+    // swap elements array[i] and array[j]
+    // we use "destructuring assignment" syntax to achieve that
+    // you'll find more details about that syntax in later chapters
+    // same can be written as:
+    // let t = array[i]; array[i] = array[j]; array[j] = t
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+//shuffle end
+
+
+        const r = Math.floor( Math.random() * 4 ) + 1;
+
+        if ( numbers.indexOf( r ) === -1 ) {
+            numbers.push( r );
+            }
+
+            document.getElementById("0").innerText=numbers[0].toString();
+            document.getElementById("1").innerText=numbers[1].toString();
+            document.getElementById("2").innerText=numbers[2].toString();
+            document.getElementById("3").innerText=numbers[3].toString();
+        function oneto2() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[0].lastElementChild;
+            a[0].removeChild( button );
+            a[1].append( button );
+        }
+
+
+        function twoto3() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[1].lastElementChild;
+            a[1].removeChild( button );
+            a[2].append( button );
+        }
+
+        function threeto1() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[2].lastElementChild;
+            a[2].removeChild( button );
+            a[0].append( button );
+        }
+
+
+        function threeto2() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[2].lastElementChild;
+            a[2].removeChild( button );
+            a[1].append( button );
+        }
+
+        function twoto1() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[1].lastElementChild;
+            a[1].removeChild( button );
+            a[0].append( button );
+
+        }
+
+        function oneto3() {
+            let a = document.getElementsByTagName( "div" );
+            let button = a[0].lastElementChild;
+            a[0].removeChild( button );
+            a[2].append( button );
+
+        }
+
+
+        
+
+        function reset() {
+
+             window.location.reload();
+            // location.reload();
+            // button1 = document.getElementById("0");
+            // button2 = document.getElementById("1");
+            // button3 = document.getElementById("2");
+            // button4 = document.getElementById("3");
+            // let d=document.getElementsByTagName("button");
+            // console.log(d[0]);
+
+            // const numbers = [1,2,3,4];
+            // while (numbers[0]===1 && numbers[1]===2 && numbers[2]===3 && numbers[3]===4) { 
+            //     numbers.length=0;
+            //     while ( numbers.length < 4 ) {
+            //         const r = Math.floor( Math.random() * 4 ) + 1;
+            //         if ( numbers.indexOf( r ) === -1 ) {
+            //             numbers.push( r );
+            //         }
+            //     }
+                
+
+            // }
+            // console.log( numbers );
+
+            // document.getElementById("0").innerText=numbers[0].toString();
+            // document.getElementById("1").innerText=numbers[1].toString();
+            // document.getElementById("2").innerText=numbers[2].toString();
+            // document.getElementById("3").innerText=numbers[3].toString();
+
+        }
+
+        function check()
+        {
+            let len1= document.getElementById("d1").childElementCount
+            let len2= document.getElementById("d2").childElementCount
+            let len3= document.getElementById("d3").childElementCount
+            console.log(len1)
+            console.log(len2)
+            console.log(len3)
+
+
+            if(len1===4)
+            {
+                let a=[]
+                for(let i=0;i<4;i++)
+                {
+                    a[i]=parseInt(document.getElementById("d1").children[i].innerText)
+                }
+
+                
+                // console.log(a[1])
+
+                if(sorted(a)==false)
+                {alert("Failed !!!")
+                audio.play}
+
+                else
+                {alert("Congratulations!! Done......")
+                audio.play}
+
+                 console.log('is array sorted ? ' + sorted(a));
+
+
+    
+            }
+
+            else if(len2===4)
+            {
+                let a=[]
+                for(let i=0;i<4;i++)
+                {
+                    a[i]=parseInt(document.getElementById("d2").children[i].innerText)
+                }
+
+                 console.log('is array sorted ? ' + sorted(a));
+
+                 if(sorted(a)==false)
+                 {alert("Failed !!!")
+                 audio.play}
+
+                else
+                {alert("Congratulations!! Done......")
+                audio.play}
+
+                 console.log('is array sorted ? ' + sorted(a));
+
+                 
+            }
+
+            else if(len3===4)
+            {
+                let a=[]
+                for(let i=0;i<4;i++)
+                {
+                    a[i]=parseInt(document.getElementById("d3").children[i].innerText)
+                }
+
+                 console.log('is array sorted ? ' + sorted(a));
+
+                 if(sorted(a)==false)
+                  {alert("Failed !!!")
+                  audio.play}
+
+                else
+                {alert("Congratulations!! Done......")
+                audio.play
+                }
+
+                 console.log('is array sorted ? ' + sorted(a));
+
+            }
+
+
+            function sorted(arr){
+            let second_index;
+            let bool
+	        for(let first_index = 0; first_index < arr.length; first_index++){
+  	        second_index = first_index + 1;
+            if(arr[first_index] - arr[second_index] < 0) return false;
+           }
+          return true;
+       }
+
+            
+
+        }
+    
+
+
+
+    </script>
+</body>
+</html>

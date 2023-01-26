@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <script>
+            class student{
+                constructor(name,roll)
+                {
+                    this.name=name;
+                    this.roll=roll;
+                }
+
+                printStudent()           //class er moddhe method er age function keyword likha lage na
+                {
+                    console.log(this.name+" "+this.roll);
+                }
+            }
+
+            let myStudent=new student("Esha",1205);
+            myStudent.printStudent();
+            console.log(myStudent.name);
+            console.log(myStudent['name']);
+        </script>
+    </body>
+</html>
