@@ -22,7 +22,7 @@ class CryptoPayment implements PaymentStrategy{
 
         System.out.println("Payment done using paypal, Amount deducted: "+deductedAmount);
     }
-    public CryptoPayment factoryMethod(){
+    public CryptoPayment setPayment(){
         System.out.println("Enter walletNumber: ");
         walletNumber=scanner.nextLine();
         System.out.println("Enter TxToken: ");

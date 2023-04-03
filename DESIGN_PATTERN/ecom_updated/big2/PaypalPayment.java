@@ -18,7 +18,7 @@ class PaypalPayment implements PaymentStrategy{
         //check balance
         System.out.println("Payment done using paypal, Amount deducted: "+deductedAmount);
     }
-    public PaypalPayment factoryMethod(){
+    public PaypalPayment setPayment(){
         System.out.println("Enter username: ");
         username=scanner.nextLine();
         System.out.println("Enter password: ");

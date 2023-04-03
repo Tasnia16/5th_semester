@@ -22,7 +22,7 @@ class CreditCardPayment implements PaymentStrategy{
         //check balance
         System.out.println("Payment done using credit card, Amount deducted: "+deductedAmount);
     }
-    public CreditCardPayment factoryMethod(){
+    public CreditCardPayment setPayment(){
         System.out.println("Enter card Number: ");
         cardNumber=scanner.nextLine();
         System.out.println("Enter cvv: ");

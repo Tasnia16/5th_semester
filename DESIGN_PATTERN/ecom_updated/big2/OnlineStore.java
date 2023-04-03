@@ -65,13 +65,13 @@ public abstract class OnlineStore {
         PaymentStrategy paymentStrategy=null;
 
         if(index==1){
-            paymentStrategy=new CreditCardPayment().factoryMethod();
+            paymentStrategy=new CreditCardPayment().setPayment();
         }
         else if(index==2){
-            paymentStrategy=new PaypalPayment().factoryMethod();
+            paymentStrategy=new PaypalPayment().setPayment();
         }
         else if(index==3){
-            paymentStrategy=new CryptoPayment().factoryMethod();
+            paymentStrategy=new CryptoPayment().setPayment();
         }
         System.out.println("Confirming payment");
 
