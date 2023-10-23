@@ -1,0 +1,22 @@
+1. FizzBuzz
+
+
+ if (str != null) return str; -----deadcode smell
+solution delete it
+
+long method smell( multiple if else)
+solved by Decompose Conditionals (Method Extraction)
+
+
+
+2. PlainTextToHtmlConverter
+
+ return new String(Files.readAllBytes(Paths.get("sample.txt")));--- long parameter list
+switch case ------ long method codesmell
+solved by method extraction
+
+stashNextCharacterAndAdvanceThePointer()-----inappropriate naming smell
+solved by renaming
+
+comment smell -----solved by renamin
+
