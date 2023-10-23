@@ -6,6 +6,9 @@ public class Decorator_Demo {
         Car car=new BasicCar();
         Car sportCar=new SportsCar(car);
 
-        sportCar.assemble();
+        //sportCar.assemble();
+
+        Car all=new LuxuryCar(sportCar);
+        all.assemble();
     }
 }
